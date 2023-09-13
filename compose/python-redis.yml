@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  app:
+    build: 
+      context: python-redis/
+    image: lecz0/simple-crud-python-cached:latest
+    ports:
+      - "8080:8080"
+    environment: 
+      MONGO_URI: mongodb://root:testpassword@mongo:27017
+      REDIS_HOST: redis  
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1024M

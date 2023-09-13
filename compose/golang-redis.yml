@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  app:
+    container_name: app
+    hostname: app
+    build: 
+      context: ../golang-redis/
+    image: lecz0/simple-crud-golang-redis:latest
+    ports:
+      - "8080:8080"
+    environment: 
+      MONGO_URI: mongodb://root:testpassword@mongo:27017
+      REDIS_HOST: redis
+      GIN_MODE: release
+      GOMEMLIMIT: 512MiB
+      GOGC: 100
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512GiB

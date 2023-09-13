@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  docker-stats:
+    image: vasilvasilev97/docker-stats-monitor
+    restart: always
+    mem_limit: 64MB
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 8888:8080
